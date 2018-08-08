@@ -137,6 +137,10 @@ func MatchString(pat, str string) (result bool, err error) {
 	return matchRe.MatchString(str), nil
 }
 
+func (matchString) ImportPath() string {
+	return ""
+}
+
 func (matchString) MatchString(pat, str string) (bool, error) {
 	return MatchString(pat, str)
 }
@@ -146,6 +150,14 @@ func (matchString) StartCPUProfile(w io.Writer) error {
 }
 
 func (matchString) StopCPUProfile() {
+}
+
+func (matchString) StartTestLog(w io.Writer) {
+	panic("shouldn't get here")
+}
+
+func (matchString) StopTestLog() error {
+	panic("shouldn't get here")
 }
 
 func (matchString) WriteHeapProfile(w io.Writer) error {
