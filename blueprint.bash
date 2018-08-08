@@ -29,6 +29,10 @@ set -e
 
 # NINJA should be set to the path of the ninja executable. By default, this
 # is just "ninja", and will be looked up in $PATH.
+if [[ "$(uname -m)" != "x86_64" ]]; then
+    # use system ninja instead of prebuilt one on systems other than x86
+    unset NINJA
+fi
 [ -z "$NINJA" ] && NINJA=ninja
 
 
